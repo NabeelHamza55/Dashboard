@@ -68,9 +68,13 @@ include('./components/header.php');
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="form-group">
-                            <label for="discount">Discount</label>
+                        <label for="discount">Discount</label>
+                        <div class="input-group">
                             <input type="text" name="discount" class="form-control" id="discount" required>
+                            <div class="input-group-append">
+                                <span class="input-group-text">%</span>
+                            </div>
+                            <input type="text" name="discount" value="" class="form-control" id="discount" disabled>
                         </div>
                     </div>
                 </div>
