@@ -1,11 +1,17 @@
 <?php
 
-$db = mysqli_connect('localhost', 'root', '', 'ebookshop');
+          $hostName = 'localhost';
+          $dbUserName = 'root';
+          $dbPassword = '';
+          $dbName = 'dashboard';
 
-if (!($db)) {
-     echo 'Database Error';
-}else{
-     echo 'Db ok';
-}
+          $db = mysqli_connect($hostName, $dbUserName, $dbPassword, $dbName);
+          if ($db) {
+               echo 'DB OK';
+               return $db;
+          }else{
+               die('DB Connection Error');
+          }
+
 
 ?>
