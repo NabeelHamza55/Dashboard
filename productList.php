@@ -78,7 +78,8 @@ $result = productList();
                         <div class="container p-1 d-flex justify-content-around align-items-center">
                             <a href="./productUpdate.php?id=<?php echo $product['id']; ?>"
                                 class="btn mx-1 btn-primary"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                            <a href="./functions/_product.php?id=<?php echo $product['id']; ?>"
+                            <a onclick="confirm('Are you Sure');"
+                                href="./functions/_delete_product.php?id=<?php echo $product['id']; ?>"
                                 class="btn mx-1 btn-primary"><i class="fa fa-trash" aria-hidden="true"></i></a>
                         </div>
                     </td>
