@@ -43,7 +43,7 @@
                     <div class="sb-sidenav-menu-heading">Manage Books</div>
                     <a class="nav-link" href="./productList.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Productsss
+                        Products
                     </a>
                     <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
                         aria-expanded="false" aria-controls="collapsePages">
