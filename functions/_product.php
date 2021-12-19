@@ -50,7 +50,8 @@
               $discount = mysqli_real_escape_string($db, $_POST['discount']);
               $description = mysqli_real_escape_string($db, $_POST['description']);
 
-               $query = "INSERT INTO products (name, product_type, brand, model, sku, unit_weight, retail, discount, description, created_at, updated_at) VALUE ('$name', '$product_type', '$brand', '$model', '$sku', '$unit_weight', '$retail', '$discount', '$description' NOW(), NOW())";
+               $query = "INSERT INTO products (name, product_type, brand, model, sku, unit_weight, retail, discount, description, created_at, updated_at) VALUE ('$name', '$product_type', '$brand', '$model', '$sku', '$unit_weight', '$retail', '$discount', '$description', NOW(), NOW())";
+
 
 
                if (mysqli_query($db, $query)) {

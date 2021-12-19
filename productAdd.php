@@ -74,7 +74,7 @@ include('./components/header.php');
                             <div class="input-group-append">
                                 <span class="input-group-text">%</span>
                             </div>
-                            <input type="text" name="discount" value="" class="form-control" id="discount" disabled>
+                            <input type="text" value="" class="form-control" id="discount" disabled>
                         </div>
                     </div>
                 </div>
