@@ -40,7 +40,17 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Dashboard
                     </a>
-                    <div class="sb-sidenav-menu-heading">Manage Books</div>
+                    <div class="sb-sidenav-menu-heading">Inventroy</div>
+                    <a class="nav-link" href="./productList.php">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        Products
+                    </a>
+                    <div class="sb-sidenav-menu-heading">Customer Cost</div>
+                    <a class="nav-link" href="./productListWithDiscount.php">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        Products
+                    </a>
+                    <div class="sb-sidenav-menu-heading">Internal BreakDown</div>
                     <a class="nav-link" href="./productList.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Products
@@ -101,7 +111,7 @@
             </div>
             <div class="sb-sidenav-footer">
                 <div class="small">MHK & MMNH</div>
-                Start Bootstrap
+                Start Product Management
             </div>
         </nav>
     </div>
