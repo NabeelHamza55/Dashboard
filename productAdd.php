@@ -74,7 +74,7 @@ include('./components/header.php');
                             <div class="input-group-append">
                                 <span class="input-group-text">%</span>
                             </div>
-                            <input type="text" name="discount" value="" class="form-control" id="discount" disabled>
+                            <input type="text" value="" class="form-control" id="discount" disabled>
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@ include('./components/header.php');
             </section>
         </div>
         <div class="card-footer">
-            <button class="btn btn-primary float-end" value="add" type="submit" name="add">Add Product</button>
+            <button class="btn btn-primary" value="add" type="submit" name="add">Add Product</button>
         </div>
     </form>
 </div>

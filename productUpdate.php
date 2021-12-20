@@ -97,7 +97,7 @@ editProduct();
             </section>
         </div>
         <div class="card-footer">
-            <button class="btn btn-primary float-end" value="update" type="submit" name="update">Update Product</button>
+            <button class="btn btn-primary" value="update" type="submit" name="update">Update Product</button>
         </div>
     </form>
 </div>
