@@ -51,9 +51,9 @@
                         Products
                     </a>
                     <div class="sb-sidenav-menu-heading">Internal BreakDown</div>
-                    <a class="nav-link" href="./productList.php">
+                    <a class="nav-link" href="./productListWithProfit.php">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Products
+                        Profit
                     </a>
                     <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
                         aria-expanded="false" aria-controls="collapsePages">
