@@ -53,7 +53,6 @@
                $query = "INSERT INTO products (name, product_type, brand, model, sku, unit_weight, retail, discount, description, created_at, updated_at) VALUE ('$name', '$product_type', '$brand', '$model', '$sku', '$unit_weight', '$retail', '$discount', '$description', NOW(), NOW())";
 
 
-
                if (mysqli_query($db, $query)) {
                     echo "<script>
                          window.location.href= './productList.php';
