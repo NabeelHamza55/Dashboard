@@ -30,8 +30,11 @@ $result = productList();
                     <th>Brand</th>
                     <th>Model</th>
                     <th>SKU</th>
-                    <th>Unit Weight</th>
+                    <th>UPC</th>
+                    <th>COST</th>
                     <th>Retail</th>
+                    <th>Quantity</th>
+                    <th>Conditions</th>
                     <th>20% Profit</th>
                     <th>40% Profit</th>
                     <th>60% Profit</th>
@@ -69,10 +72,22 @@ $result = productList();
                         <?php echo $product['sku']; ?>
                     </td>
                     <td>
-                        <?php echo $product['unit_weight']; ?>
+                        <?php echo $product['upc']; ?>
                     </td>
                     <td>
-                        <?php echo $product['retail']; ?>
+                        $<?php echo $product['cost']; ?>
+                    </td>
+                    <td>
+                        $<?php echo $product['retail']; ?>
+                    </td>
+                    <!-- <td>
+                        <?php // echo $product['discount']; ?>
+                    </td> -->
+                    <td>
+                        <?php echo $product['quantity']; ?>
+                    </td>
+                    <td>
+                        <?php echo $product['conditions']; ?>
                     </td>
                     <td>
                         <?php 

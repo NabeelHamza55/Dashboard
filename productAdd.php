@@ -31,13 +31,13 @@ include('./components/header.php');
                     <div class="col">
                         <div class="form-group">
                             <label for="productType">Product Type</label>
-                            <input type="text" name="productType" class="form-control" id="productType" required>
+                            <input type="text" name="productType" class="form-control" id="productType">
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             <label for="brand">Brand</label>
-                            <input type="text" name="brand" class="form-control" id="brand" required>
+                            <input type="text" name="brand" class="form-control" id="brand">
                         </div>
                     </div>
                 </div>
@@ -46,25 +46,25 @@ include('./components/header.php');
                     <div class="col-6">
                         <div class="form-group">
                             <label for="model">Model</label>
-                            <input type="text" name="model" class="form-control" id="model" required>
+                            <input type="text" name="model" class="form-control" id="model">
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label for="sku">SKU</label>
-                            <input type="text" name="sku" class="form-control" id="sku" required>
+                            <input type="text" name="sku" class="form-control" id="sku">
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label for="UPC">UPC</label>
-                            <input type="text" name="UPC" class="form-control" id="UPC" required>
+                            <input type="text" name="upc" class="form-control" id="UPC">
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-group">
                             <label for="manufactor">Manufactor</label>
-                            <input type="text" name="manufactor" class="form-control" id="manufactor" required>
+                            <input type="text" name="manufactor" class="form-control" id="manufactor">
                         </div>
                     </div>
                     <div class="col-4">
@@ -73,7 +73,7 @@ include('./components/header.php');
                             <div class="input-group-append">
                                 <span class="input-group-text">$</span>
                             </div>
-                            <input type="number" name="cost" class="form-control" id="cost" required>
+                            <input type="number" name="cost" step="0.01" class="form-control" id="cost" required>
                         </div>
                     </div>
                     <div class="col-4">
@@ -82,22 +82,18 @@ include('./components/header.php');
                             <div class="input-group-append">
                                 <span class="input-group-text">$</span>
                             </div>
-                            <input type="number" name="retail" class="form-control" id="retail" required>
+                            <input type="number" name="retail" step="0.01" class="form-control" id="retail" required>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <div class="form-group">
-                            <label for="quantity">Quantity</label>
-                            <input type="text" name="quantity" class="form-control" id="quantity" required>
-                        </div>
-                        <!-- <label for="discount">Discount</label>
+                    <div class="col-4 d-none">
+                        <label for="discount">Discount</label>
                         <div class="input-group">
-                            <input type="text" name="discount" class="form-control" id="discount" required>
+                            <input type="text" name="discount" class="form-control" id="discount">
                             <div class="input-group-append">
                                 <span class="input-group-text">%</span>
                             </div>
                             <input type="text" value="" class="form-control" id="discount" disabled>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
                 <hr>
@@ -105,20 +101,30 @@ include('./components/header.php');
                     <div class="col-4">
                         <div class="form-group">
                             <label for="unitWeight">Unit Weight</label>
-                            <input type="text" name="unitWeight" class="form-control" id="unitWeight" required>
+                            <input type="number" step="0.01" name="unitWeight" class="form-control" id="unitWeight">
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="form-group">
                             <label for="dimension">Dimension</label>
-                            <input type="text" name="dimension" class="form-control" id="dimension" required>
+                            <input type="number" step="0.01" name="dimension" class="form-control" id="dimension">
                         </div>
                     </div>
+
                     <div class="col-4">
                         <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" step="0.01" name="quantity" class="form-control" id="quantity">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
                             <label for="unitWeight">Conditions</label>
-                            <select class="form-control" name="" id="">
-                                <option disabled selected value="">Select</option>
+                            <select class="form-control" name="condition" id="condition">
+                                <option disabled selected value="">Select Conditions </option>
                                 <option value="new">New</option>
                                 <option value="used">Used</option>
                                 <option value="refurbished">Refurbished</option>
@@ -126,6 +132,12 @@ include('./components/header.php');
                                 <option value="shelfPulls">Shelf Pulls</option>
                                 <option value="costumersReturn">Costumers Return/</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="image">Product Image</label>
+                            <input type="file" name="picture" class="form-control" id="image">
                         </div>
                     </div>
                 </div>

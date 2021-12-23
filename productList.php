@@ -25,14 +25,21 @@ $result = productList();
             <thead>
                 <tr>
                     <th>Sr.No.</th>
+                    <th>Product Image</th>
                     <th>Name</th>
                     <th>Product Type</th>
                     <th>Brand</th>
                     <th>Model</th>
                     <th>SKU</th>
-                    <th>Unit Weight</th>
+                    <th>UPC</th>
+                    <th>Manufactor</th>
+                    <th>COST</th>
                     <th>Retail</th>
-                    <th>Discount</th>
+                    <th>Unit Weight</th>
+                    <th>Dimensions</th>
+                    <th>Quantity</th>
+                    <th>Conditions</th>
+                    <th>Description</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -51,6 +58,9 @@ $result = productList();
                 <tr>
                     <td><?php echo $sr; ?></td>
                     <td>
+                        <?php echo $product['image']; ?>
+                    </td>
+                    <td>
                         <?php echo $product['name']; ?>
                     </td>
                     <td>
@@ -66,14 +76,36 @@ $result = productList();
                         <?php echo $product['sku']; ?>
                     </td>
                     <td>
+                        <?php echo $product['upc']; ?>
+                    </td>
+                    <td>
+                        <?php echo $product['manufactor']; ?>
+                    </td>
+                    <td>
+                        $<?php echo $product['cost']; ?>
+                    </td>
+                    <td>
+                        $<?php echo $product['retail']; ?>
+                    </td>
+                    <!-- <td>
+                        <?php // echo $product['discount']; ?>
+                    </td> -->
+                    <td>
                         <?php echo $product['unit_weight']; ?>
                     </td>
                     <td>
-                        <?php echo $product['retail']; ?>
+                        <?php echo $product['dimension']; ?>
                     </td>
                     <td>
-                        <?php echo $product['discount']; ?>
+                        <?php echo $product['quantity']; ?>
                     </td>
+                    <td>
+                        <?php echo $product['conditions']; ?>
+                    </td>
+                    <td>
+                        <?php echo $product['description']; ?>
+                    </td>
+
                     <td>
                         <div class="container p-1 d-flex justify-content-around align-items-center">
                             <a href="./productUpdate.php?id=<?php echo $product['id']; ?>"
@@ -91,14 +123,6 @@ $result = productList();
                 ?>
             </tbody>
             <tfoot>
-                <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
-                </tr>
             </tfoot>
         </table>
     </div>
