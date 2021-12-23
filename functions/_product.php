@@ -67,7 +67,7 @@
                }else{
                     echo "<script>
                     alert('unsuccessfull');
-                    // window.location.href= './productAdd.php';
+                    window.location.href= './productAdd.php';
                </script>";
                }
          }
@@ -96,7 +96,7 @@
                $picture =  mysqli_real_escape_string($db, $_POST['picture']);
                $description = mysqli_real_escape_string($db, $_POST['description']);
 
-               $query = "UPDATE products SET name = '$name', product_type = '$product_type', brand = '$brand', model = '$model', sku = '$sku', upc = '$upc', manufactor = '$manufactor', cost = '$costPrice', retail = '$retailPrice', unit_weight = '$unit_weight', dimension = '$dimension', quantity = '$quantity', conditions = '$condition', picture = '$picture', description = '$description', updated_at = NOW() WHERE id = '$id'";
+               $query = "UPDATE products SET name = '$name', product_type = '$product_type', brand = '$brand', model = '$model', sku = '$sku', upc = '$upc', manufactor = '$manufactor', cost = '$costPrice', retail = '$retailPrice', unit_weight = '$unit_weight', dimension = '$dimension', quantity = '$quantity', conditions = '$condition', image = '$picture', description = '$description', updated_at = NOW() WHERE id = '$id'";
 
 
                if (mysqli_query($db, $query)) {
