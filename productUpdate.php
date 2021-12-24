@@ -19,8 +19,28 @@ editProduct();
         <h4 class="card-title">Add Product</h4>
         <a href="./productList.php" class="btn btn-primary">Product List</a>
     </div>
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
         <div class="card-body">
+            <div class="container">
+                <?php 
+                    if (isset($_SESSION['status'])) {
+                ?>
+                <div class="alert alert-success">
+                    <strong>Success!</strong> <?php echo $_SESSION['status']; ?>.
+                </div>
+                <?php
+                    unset($_SESSION['status']);
+                    }
+                    if (isset($_SESSION['errors'])) {
+                ?>
+                <div class="alert alert-danger">
+                    <strong>Failed!</strong> <?php echo $_SESSION['errors']; ?>.
+                </div>
+                <?php
+                    unset($_SESSION['errors']);
+                    }
+                ?>
+            </div>
             <section class="container">
                 <div class="row ">
                     <div class="col">

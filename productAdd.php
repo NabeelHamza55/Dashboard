@@ -18,7 +18,7 @@ include('./components/header.php');
         <h4 class="card-title">Add Product</h4>
         <a href="./productList.php" class="btn btn-primary">Product List</a>
     </div>
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
         <div class="card-body">
             <section class="container">
                 <div class="row ">
