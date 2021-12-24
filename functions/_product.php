@@ -88,10 +88,10 @@
                $manufactor = mysqli_real_escape_string($db, $_POST['manufactor']);
                $costPrice = mysqli_real_escape_string($db, $_POST['cost']);
                $retailPrice = mysqli_real_escape_string($db, $_POST['retail']);
-               $discount = mysqli_real_escape_string($db, $_POST['discount']);
+               // $discount = mysqli_real_escape_string($db, $_POST['discount']);
                $unit_weight =  mysqli_real_escape_string($db, $_POST['unitWeight']);
                $dimension =  mysqli_real_escape_string($db, $_POST['dimension']);
-               $quantity = mysqli_real_escape_string($db, $_POST['quanity']);
+               $quantity = mysqli_real_escape_string($db, $_POST['quantity']);
                $condition =  mysqli_real_escape_string($db, $_POST['condition']);
                $picture =  mysqli_real_escape_string($db, $_POST['picture']);
                $description = mysqli_real_escape_string($db, $_POST['description']);

@@ -6,10 +6,11 @@
           $dbName = 'dashboard';
 
           $db = mysqli_connect($hostName, $dbUserName, $dbPassword, $dbName);
-          if ($db) {
-               echo 'DB OK';
-          }else{
+          if (!$db) {
                die('DB Connection Error');
+          }else{
+               // echo 'DB OK';
+               
           }
 
 

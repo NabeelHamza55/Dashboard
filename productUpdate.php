@@ -5,7 +5,7 @@ include('./components/header.php');
 include('./functions/_product.php');
 $product = singleProduct();
 editProduct();
-?>"
+?>
 
 <h1 class="mt-4">Products</h1>
 <ol class="breadcrumb mb-4">
@@ -137,7 +137,7 @@ editProduct();
                     <div class="col-6">
                         <div class="form-group">
                             <label for="unitWeight">Conditions</label>
-                            <select class="form-control" name="condition" id="condition">
+                            <select class="form-control" name="condition" id="condition" required>
                                 <option disabled selected value="">Select Conditions </option>
                                 <option value="new">New</option>
                                 <option value="used">Used</option>
@@ -167,7 +167,7 @@ editProduct();
             </section>
         </div>
         <div class="card-footer">
-            <button class="btn btn-primary" value="add" type="submit" name="add">Add Product</button>
+            <button class="btn btn-primary" value="update" type="submit" name="update">Update Product</button>
         </div>
     </form>
 </div>

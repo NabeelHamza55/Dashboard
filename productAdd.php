@@ -123,7 +123,7 @@ include('./components/header.php');
                     <div class="col-6">
                         <div class="form-group">
                             <label for="unitWeight">Conditions</label>
-                            <select class="form-control" name="condition" id="condition">
+                            <select class="form-control" name="condition" id="condition" required>
                                 <option disabled selected value="">Select Conditions </option>
                                 <option value="new">New</option>
                                 <option value="used">Used</option>
