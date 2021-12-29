@@ -22,15 +22,7 @@ editProduct();
     <form action="" method="POST" enctype="multipart/form-data">
         <div class="card-body">
             <div class="container">
-                <?php 
-                    if (isset($_SESSION['status'])) {
-                ?>
-                <div class="alert alert-success">
-                    <strong>Success!</strong> <?php echo $_SESSION['status']; ?>.
-                </div>
-                <?php
-                    unset($_SESSION['status']);
-                    }
+                <?php    
                     if (isset($_SESSION['errors'])) {
                 ?>
                 <div class="alert alert-danger">
@@ -66,35 +58,7 @@ editProduct();
                     </div>
                 </div>
                 <hr>
-                <div class="row ">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="model">Model</label>
-                            <input type="text" name="model" value="<?php echo $product['model'] ?>" class="form-control"
-                                id="model">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="sku">SKU</label>
-                            <input type="text" name="sku" value="<?php echo $product['sku'] ?>" class="form-control"
-                                id="sku">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="UPC">UPC</label>
-                            <input type="text" name="upc" value="<?php echo $product['upc'] ?>" class="form-control"
-                                id="UPC">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="manufactor">Manufactor</label>
-                            <input type="text" name="manufactor" value="<?php echo $product['manufactor'] ?>"
-                                class="form-control" id="manufactor">
-                        </div>
-                    </div>
+                <div class="row">
                     <div class="col-4">
                         <label for="cost">Cost Price</label>
                         <div class="input-group">
@@ -158,13 +122,23 @@ editProduct();
                         <div class="form-group">
                             <label for="unitWeight">Conditions</label>
                             <select class="form-control" name="condition" id="condition" required>
-                                <option disabled selected value="">Select Conditions </option>
-                                <option value="new">New</option>
-                                <option value="used">Used</option>
-                                <option value="refurbished">Refurbished</option>
-                                <option value="selvage">Selvage</option>
-                                <option value="shelfPulls">Shelf Pulls</option>
-                                <option value="costumersReturn">Costumers Return/</option>
+                                <option disabled value="">Select Conditions </option>
+                                <option <?php echo $product['conditions'] == "new" ? 'selected' : ''; ?> value="new">New
+                                </option>
+                                <option <?php echo $product['conditions'] == "used" ? 'selected' : ''; ?> value="used">
+                                    Used
+                                </option>
+                                <option <?php echo $product['conditions'] == "refurbished" ? 'selected' : ''; ?>
+                                    value="refurbished">
+                                    Refurbished</option>
+                                <option <?php echo $product['conditions'] == "selvage" ? 'selected' : ''; ?>
+                                    value="selvage">
+                                    Selvage</option>
+                                <option <?php echo $product['conditions'] == "shelfPulls" ? 'selected' : ''; ?>
+                                    value="shelfPulls">
+                                    Shelf Pulls</option>
+                                <option <?php echo $product['conditions'] == "costumersReturn" ? 'selected' : ''; ?>
+                                    value="costumersReturn">Costumers Return/</option>
                             </select>
                         </div>
                     </div>
@@ -173,6 +147,43 @@ editProduct();
                             <label for="image">Product Image</label>
                             <input type="file" name="picture" value="<?php echo $product['image'] ?>"
                                 class="form-control" id="image">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row ">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="model">Model</label>
+                            <input type="text" name="model" value="<?php echo $product['model'] ?>" class="form-control"
+                                id="model">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="sku">SKU</label>
+                            <input type="text" name="sku" value="<?php echo $product['sku'] ?>" class="form-control"
+                                id="sku">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="UPC">UPC</label>
+                            <input type="text" name="upc" value="<?php echo $product['upc'] ?>" class="form-control"
+                                id="UPC">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="manufactor">Manufactor</label>
+                            <input type="text" name="manufactor" value="<?php echo $product['manufactor'] ?>"
+                                class="form-control" id="manufactor">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="vendors">Vendors</label>
+                            <input type="text" name="vendors" class="form-control" id="vendors">
                         </div>
                     </div>
                 </div>
@@ -192,7 +203,9 @@ editProduct();
     </form>
 </div>
 <br>
+
 <?php
 include('./components/footer.php');
 include('./components/HTML_End.php');
+
   ?>"

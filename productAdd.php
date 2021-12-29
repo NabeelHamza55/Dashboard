@@ -20,6 +20,18 @@ include('./components/header.php');
     </div>
     <form action="" method="POST" enctype="multipart/form-data">
         <div class="card-body">
+            <div class="container">
+                <?php    
+                    if (isset($_SESSION['errors'])) {
+                ?>
+                <div class="alert alert-danger">
+                    <strong>Failed!</strong> <?php echo $_SESSION['errors']; ?>.
+                </div>
+                <?php
+                    unset($_SESSION['errors']);
+                    }
+                ?>
+            </div>
             <section class="container">
                 <div class="row ">
                     <div class="col">
@@ -42,31 +54,8 @@ include('./components/header.php');
                     </div>
                 </div>
                 <hr>
-                <div class="row ">
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="model">Model</label>
-                            <input type="text" name="model" class="form-control" id="model">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="sku">SKU</label>
-                            <input type="text" name="sku" class="form-control" id="sku">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="UPC">UPC</label>
-                            <input type="text" name="upc" class="form-control" id="UPC">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="form-group">
-                            <label for="manufactor">Manufactor</label>
-                            <input type="text" name="manufactor" class="form-control" id="manufactor">
-                        </div>
-                    </div>
+
+                <div class="row">
                     <div class="col-4">
                         <label for="cost">Cost Price</label>
                         <div class="input-group">
@@ -138,6 +127,39 @@ include('./components/header.php');
                         <div class="form-group">
                             <label for="image">Product Image</label>
                             <input type="file" name="picture" class="form-control" id="image">
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row ">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="model">Model</label>
+                            <input type="text" name="model" class="form-control" id="model">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="sku">SKU</label>
+                            <input type="text" name="sku" class="form-control" id="sku">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="UPC">UPC</label>
+                            <input type="text" name="upc" class="form-control" id="UPC">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="manufactor">Manufactor</label>
+                            <input type="text" name="manufactor" class="form-control" id="manufactor">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="vendors">Vendors</label>
+                            <input type="text" name="vendors" class="form-control" id="vendors">
                         </div>
                     </div>
                 </div>

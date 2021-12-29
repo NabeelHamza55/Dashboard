@@ -34,16 +34,9 @@
                                  $errors['password'] = "The Password You Entered Is Incorrect";
                              } else {
                                   $_SESSION['login'] = $user;
-                                  if ($_SESSION['login']['user_type_fk'] == 1) {
                                    echo "
                                    <script>
-                                        window.location.href='./Admin/index.php';
-                                   </script>
-                                   ";
-                                  }
-                  echo "
-                                   <script>
-                                        window.location.href='./index.php';
+                                      window.location.href='./index.php';
                                    </script>
                                    ";
                              }

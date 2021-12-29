@@ -47,6 +47,7 @@
               $sku = mysqli_real_escape_string($db, $_POST['sku']);
               $upc = mysqli_real_escape_string($db, $_POST['upc']);
               $manufactor = mysqli_real_escape_string($db, $_POST['manufactor']);
+              $vendors = mysqli_real_escape_string($db, $_POST['vendors']);
               $costPrice = mysqli_real_escape_string($db, $_POST['cost']);
               $retailPrice = mysqli_real_escape_string($db, $_POST['retail']);
           //     $discount = mysqli_real_escape_string($db, $_POST['discount']);
@@ -61,10 +62,10 @@
                     // Check if file was uploaded without errors
                     if($_FILES["picture"]["error"] == 0){
                          $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
-                         $filename = $name. "_" .time(). "_" .$picture;
+                         $filename = $name. "_New_" .$picture;
                          $filetype = $_FILES["picture"]["type"];
                          $filesize = $_FILES["picture"]["size"];
-                         $filename = $name.time(). "_" .$picture;
+                         $filename = $name."_New_".$picture ;
                          $upload_dir = 'assets/uploads/images/';
 
                          // Verify file extension
@@ -92,7 +93,7 @@
                          echo "Error: " . $_FILES["picture"]["error"];
                     }
                     
-               $query = "INSERT INTO products (name, product_type, brand, model, sku, upc, manufactor, cost, retail, unit_weight, dimension, quantity, conditions, image, description, created_at, updated_at) VALUE ('$name', '$product_type', '$brand', '$model', '$sku', '$upc', '$manufactor', '$costPrice', '$retailPrice', '$unit_weight', '$dimension', '$quantity', '$condition', '$p_picture', '$description', NOW(), NOW())";
+               $query = "INSERT INTO products (name, product_type, brand, model, sku, upc, manufactor, vendors, cost, retail, unit_weight, dimension, quantity, conditions, image, description, created_at, updated_at) VALUE ('$name', '$product_type', '$brand', '$model', '$sku', '$upc', '$manufactor', $vendors, '$costPrice', '$retailPrice', '$unit_weight', '$dimension', '$quantity', '$condition', '$p_picture', '$description', NOW(), NOW())";
 
 
                if (mysqli_query($db, $query)) {
@@ -121,6 +122,7 @@
                $sku = mysqli_real_escape_string($db, $_POST['sku']);
                $upc = mysqli_real_escape_string($db, $_POST['upc']);
                $manufactor = mysqli_real_escape_string($db, $_POST['manufactor']);
+               $vendors = mysqli_real_escape_string($db, $_POST['vendors']);
                $costPrice = mysqli_real_escape_string($db, $_POST['cost']);
                $retailPrice = mysqli_real_escape_string($db, $_POST['retail']);
                // $discount = mysqli_real_escape_string($db, $_POST['discount']);
@@ -131,16 +133,16 @@
                $picture =  mysqli_real_escape_string($db, $_FILES["picture"]["name"]);
                $description = mysqli_real_escape_string($db, $_POST['description']);
 
-
+               
                // File Upload
                     // Check if file was uploaded without errors
                     if($_FILES["picture"]["error"] == 0){
                          $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
-                         $filename = $name. "__" .$picture;
+                         $filename = $name. "_Update_" .$picture;
                          $filetype = $_FILES["picture"]["type"];
                          $filesize = $_FILES["picture"]["size"];
                          // $filename = $name.time(). "_" .$picture;
-                         $filename = $name. "__" .$picture;
+                         $filename = $name. "_Update_" .$picture;
                          $upload_dir = 'assets/uploads/images/';
 
                          // Verify file extension
@@ -157,7 +159,9 @@
                          if(in_array($filetype, $allowed)){
                          // Check whether file exists before uploading it
                          if(file_exists($upload_dir . $filename)){
-                              $_SESSION['errors'] = $filename . " is already exists.";
+                              unlink($upload_dir . $filename);
+                              move_uploaded_file($_FILES["picture"]["tmp_name"], $upload_dir . $filename);
+
                          } else{
                               move_uploaded_file($_FILES["picture"]["tmp_name"], $upload_dir . $filename);
                               // echo "Your file was uploaded successfully.";
@@ -169,21 +173,29 @@
                     } else{
                          $_SESSION['errors'] =  "Error: " . $_FILES["picture"]["error"];
                     }
-
-               $query = "UPDATE products SET name = '$name', product_type = '$product_type', brand = '$brand', model = '$model', sku = '$sku', upc = '$upc', manufactor = '$manufactor', cost = '$costPrice', retail = '$retailPrice', unit_weight = '$unit_weight', dimension = '$dimension', quantity = '$quantity', conditions = '$condition', image = '$p_picture', description = '$description', updated_at = NOW() WHERE id = '$id'";
-
-
-               if (mysqli_query($db, $query)) {
-                    $_SESSION['status'] =  "Product Updated Successfully";
-                    echo "<script>
-                         window.location.href= './productList.php';
-                    </script>";
+                    
+                    if (!empty($_FILES['picture']['name'])) {  
+                    $query = "UPDATE products SET name = '$name', product_type = '$product_type', brand = '$brand', model = '$model', sku = '$sku', upc = '$upc', manufactor = '$manufactor', vendors = '$vendors', cost = '$costPrice', retail = '$retailPrice', unit_weight = '$unit_weight', dimension = '$dimension', quantity = '$quantity', conditions = '$condition', image = '$p_picture', description = '$description', updated_at = NOW() WHERE id = '$id'";
                }else{
-                    $_SESSION['errors'] =  "Failed";
-                    echo "<script>
-                    window.location.href= './productUpdate.php?id='".$id.";
-               </script>";
+                    $query = "UPDATE products SET name = '$name', product_type = '$product_type', brand = '$brand', cost = '$costPrice', retail = '$retailPrice', unit_weight = '$unit_weight', dimension = '$dimension', quantity = '$quantity', conditions = '$condition',  model = '$model', sku = '$sku', upc = '$upc', manufactor = '$manufactor', vendors = '$vendors', description = '$description', updated_at = NOW() WHERE id = '$id'";
                }
+                    
+                    
+               if (isset($_SESSION['errors'])) {
+                    echo $_SESSION['errors'];
+               }
+                    if (mysqli_query($db, $query)) {
+                         $_SESSION['status'] =  "Product Updated Successfully";
+                         echo "<script>
+                            window.location.href= './productList.php';
+                         </script>";
+                    }else{
+                         $_SESSION['errors'] =  "Failed";
+                         echo "<script>
+                         window.location.href= './productUpdate.php?id='".$id.";
+                    </script>";
+                    }
+               
          }
 
      }

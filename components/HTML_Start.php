@@ -3,7 +3,7 @@
 session_start();
 if (!isset($_SESSION['login'])) {
     echo "<script>
-window.location.href = './login.php';
+     window.location.href = './login.php';
 </script>";
 }
 include('functions/db.php');
