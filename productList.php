@@ -16,9 +16,13 @@ $result = productList();
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
         <h4 class="card-title">Product List</h4>
-        <a href="./productAdd.php" class="btn btn-primary">Add Product</a>
+        <div class="d-flex">
+            <a href="./CSVImport.php" class="btn btn-primary mx-1">Import From CSV</a>
+            <a href="./scrap/writeCSV.php" class="btn btn-primary mx-1">export to CSV</a>
+            <a href="./productAdd.php" class="btn btn-primary mx-1">Add Product</a>
+        </div>
     </div>
-    <?php 
+    <?php
         if (isset($_SESSION['status'])) {
     ?>
     <div class="card-body">

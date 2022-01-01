@@ -92,7 +92,7 @@
                     } else{
                          echo "Error: " . $_FILES["picture"]["error"];
                     }
-                    
+
                $query = "INSERT INTO products (name, product_type, brand, model, sku, upc, manufactor, vendors, cost, retail, unit_weight, dimension, quantity, conditions, image, description, created_at, updated_at) VALUE ('$name', '$product_type', '$brand', '$model', '$sku', '$upc', '$manufactor', $vendors, '$costPrice', '$retailPrice', '$unit_weight', '$dimension', '$quantity', '$condition', '$p_picture', '$description', NOW(), NOW())";
 
 
@@ -133,7 +133,7 @@
                $picture =  mysqli_real_escape_string($db, $_FILES["picture"]["name"]);
                $description = mysqli_real_escape_string($db, $_POST['description']);
 
-               
+
                // File Upload
                     // Check if file was uploaded without errors
                     if($_FILES["picture"]["error"] == 0){
@@ -173,33 +173,98 @@
                     } else{
                          $_SESSION['errors'] =  "Error: " . $_FILES["picture"]["error"];
                     }
-                    
-                    if (!empty($_FILES['picture']['name'])) {  
+
+                    if (!empty($_FILES['picture']['name'])) {
                     $query = "UPDATE products SET name = '$name', product_type = '$product_type', brand = '$brand', model = '$model', sku = '$sku', upc = '$upc', manufactor = '$manufactor', vendors = '$vendors', cost = '$costPrice', retail = '$retailPrice', unit_weight = '$unit_weight', dimension = '$dimension', quantity = '$quantity', conditions = '$condition', image = '$p_picture', description = '$description', updated_at = NOW() WHERE id = '$id'";
                }else{
                     $query = "UPDATE products SET name = '$name', product_type = '$product_type', brand = '$brand', cost = '$costPrice', retail = '$retailPrice', unit_weight = '$unit_weight', dimension = '$dimension', quantity = '$quantity', conditions = '$condition',  model = '$model', sku = '$sku', upc = '$upc', manufactor = '$manufactor', vendors = '$vendors', description = '$description', updated_at = NOW() WHERE id = '$id'";
                }
-                    
-                    
+
+
                if (isset($_SESSION['errors'])) {
                     echo $_SESSION['errors'];
                }
-                    if (mysqli_query($db, $query)) {
-                         $_SESSION['status'] =  "Product Updated Successfully";
-                         echo "<script>
-                            window.location.href= './productList.php';
-                         </script>";
-                    }else{
-                         $_SESSION['errors'] =  "Failed";
-                         echo "<script>
-                         window.location.href= './productUpdate.php?id='".$id.";
+
+               if (mysqli_query($db, $query)) {
+                    $_SESSION['status'] =  "Product Updated Successfully";
+                    echo "<script>
+                         window.location.href= './productList.php';
                     </script>";
-                    }
-               
-         }
+               }else{
+                    $_SESSION['errors'] =  "Failed";
+                    echo "<script>
+                    window.location.href= './productUpdate.php?id='".$id.";
+               </script>";
+               }
+          }
 
      }
 
+     function importCSV(){
+          global $db;
+          global $errors;
+          if (isset($_POST['import'])) {
+               $filename = $_FILES['CSV']['name'];
+               $upload_dir = 'assets/uploads/documents/';
 
+               // Allowed mime types
+               $csvMimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain');
+
+               // Validate whether selected file is a CSV file
+               if(!empty($_FILES['CSV']['name']) && in_array($_FILES['CSV']['type'], $csvMimes)){
+
+                    // If the file is uploaded
+                    if(is_uploaded_file($_FILES['CSV']['tmp_name'])){
+
+                         // Open uploaded CSV file with read-only mode
+                         $csvFile = fopen($_FILES['CSV']['tmp_name'], 'r');
+
+                         // Skip the first line
+
+                         fgetcsv($csvFile, 10000, ',');
+                         // Parse data from CSV file line by line
+                         while( ($product = fgetcsv($csvFile, 10000, ',')) !== FALSE){
+                              // Get row data
+
+                              // echo '<pre>';
+                              // print_r($product);
+                              // echo '</pre><br>';
+
+                              // Insert member data in the database
+                               $query = "INSERT INTO products (name, product_type, brand, model, sku, upc, manufactor, vendors, cost, retail, unit_weight, dimension, quantity, conditions, image, description) VALUE ('$product[0]', '$product[2]', '$product[3]', '$product[4]', '$product[5]', '$product[5]', '$product[6]', '$product[7]', '$product[8]', '$product[9]', '$product[10]', '$product[11]', '$product[12]', '$product[13]', '$product[14]', '$product[15]')";
+
+                               mysqli_query($db, $query);
+
+                         }
+
+                         // Close opened CSV file
+                         fclose($csvFile);
+                         // if (isset($_SESSION['errors'])) {
+                         //      echo $_SESSION['errors'];
+                         // }
+
+                         if (!isset($_SESSION['errors'])) {
+                              $_SESSION['status'] =  "Products Added Successfully";
+                              echo "<script>
+                                   window.location.href= './productList.php';
+                              </script>";
+                         }
+                    }else{
+                         $_SESSION['errors'] =  "System Errors";
+                              echo "<script>
+                              window.location.href= './CSVImport.php';
+                         </script>";
+                    }
+               }else{
+                    if (!isset($_SESSION['status'])) {
+                         $_SESSION['errors'] =  "The File Is not A CSV FILE";
+                              echo "<script>
+                              window.location.href= './CSVImport.php';
+                              </script>";
+                    }
+               }
+          }
+
+     }
 
 ?>
